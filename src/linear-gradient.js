@@ -3,7 +3,7 @@ import {scaleLinear} from 'd3-scale';
 import {rgb} from 'd3-color';
 import bigRat from 'big-rational';
 import {parseGradientObject} from './linear-gradient-parser';
-import _ from 'lodash';
+import cloneDeep from 'lodash.clonedeep';
 
 const HARDSTEPLIMIT = 65535;
 
@@ -204,7 +204,7 @@ function optimize(gradient, steps) {
 
 function makeColorScale(range, steps, options) {
   options = options || {};
-  var gradient = new LinearGradient(_.cloneDeep(range), options);
+  var gradient = new LinearGradient(cloneDeep(range), options);
   if (!gradient.segments) {
     return false;
   }
